@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
     <div class="contenido">
       <ToDoAdd @new="addNewToDo"/>
-      <ToDoList :list="list"/>
+      <ToDoList :list="list" @deleteItem:change="deleteItem"/>
     </div>
   </div>
 </template>
@@ -23,10 +23,12 @@ export default {
       title: 'ToDo List',
       list: [ {
         key: 1,
-        name: 'Suspender a todos'
+        name: 'Suspender a todos',
+        state: 'done'
       }, {
         key: 2,
-        name: 'Preparar exámenes'
+        name: 'Preparar exámenes',
+        state: 'todo'
       } ]
     }
   },
@@ -34,6 +36,10 @@ export default {
     addNewToDo: function (todo) {
       todo.key = this.list.length + 1
       this.list.push(todo)
+    },
+    deleteItem (item) {
+      console.log(item.key)
+      console.log('Mensaje recibido de Abuelo')
     }
   }
 }

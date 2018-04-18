@@ -1,11 +1,19 @@
 <template>
-  <li :key="item.key">{{item.name}}</li>
+  <div>
+<li :key="item.key" v-bind:class="item.state">{{item.name}}</li>
+<button @click="emitDelete">Delete</button>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'ToDoItem',
-  props: ['item']
+  props: ['item'],
+  methods: {
+    emitDelete () {
+      this.$emit('deleteItem:change', this.item)
+    }
+  }
 }
 </script>
 
@@ -14,5 +22,10 @@ export default {
   li {
     height: 30px;
     line-height: 30px;
+    display: inline-block;
+  }
+  .done {
+  	text-decoration:line-through;
+  	display: inline-block;
   }
 </style>

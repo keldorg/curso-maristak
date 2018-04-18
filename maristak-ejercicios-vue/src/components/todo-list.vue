@@ -1,7 +1,7 @@
 <template>
   <div class="todo-list">
     <ul>
-      <ToDoItem v-for="item in list" :item="item" :key="item.key"/>
+      <ToDoItem v-for="item in list" :item="item" :key="item.key" @deleteItem:change="deleteItem"/>
     </ul>
   </div>
 </template>
@@ -16,6 +16,12 @@ export default {
   props: ['list'],
   created () {
     console.log(this.list)
+  },
+  methods: {
+    deleteItem (item) {
+      console.log('Mensaje recibido de Padre')
+      this.$emit('deleteItem:change', item)
+    }
   }
 }
 </script>
