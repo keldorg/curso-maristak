@@ -1,7 +1,7 @@
 <template>
   <div>
-<li :key="item.key" v-bind:class="item.state">{{item.name}}</li>
-<button @click="emitDelete">Delete</button>
+    <li :key="item.key" v-bind:class="item.state">{{item.name}}</li>
+    <button @click="emitDelete">Delete</button>
   </div>
 </template>
 
@@ -24,8 +24,11 @@ export default {
     line-height: 30px;
     display: inline-block;
   }
+  // eslint-disable-next-line
   .done {
-  	text-decoration:line-through;
-  	display: inline-block;
+  // eslint-disable-next-line
+    text-decoration: line-through;
+  // eslint-disable-next-line
+    display: inline-block;
   }
 </style>

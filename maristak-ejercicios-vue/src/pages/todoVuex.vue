@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
     <div class="contenido">
       <ToDoAdd @new="addNewToDo"/>
-      <ToDoList :list="list" @deleteItem:change="deleteItem"/>
+      <ToDoList :list="$store.state.todos" @deleteItem:change="deleteItem"/>
     </div>
   </div>
 </template>
@@ -11,16 +11,18 @@
 <script>
 import ToDoList from '../components/todo-list.vue'
 import ToDoAdd from '../components/todo-add.vue'
+import store from '../store'
 
 export default {
-  name: 'ToDo2',
+  name: 'ToDo',
+  store,
   components: {
     ToDoList,
     ToDoAdd
   },
   data () {
     return {
-      title: 'ToDo List',
+      title: 'ToDo List Vuex',
       list: [ {
         key: 1,
         name: 'Suspender a todos',
@@ -34,8 +36,7 @@ export default {
   },
   methods: {
     addNewToDo: function (todo) {
-      todo.key = this.list.length + 1
-      this.list.push(todo)
+      this.$store.dispatch('addTodo', todo)
     },
     deleteItem (item) {
       console.log(item.key)
