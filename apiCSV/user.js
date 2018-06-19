@@ -1,3 +1,6 @@
+var conexiones = require('./factoriaConexiones')
+console.log(conexiones.getConexiones());
+
 const user = class User {
   constructor(id, nombre, apellido, contraseña, edad) {
     this.id = id

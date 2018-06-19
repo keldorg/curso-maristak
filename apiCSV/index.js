@@ -1,6 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var conexiones = require('./factoriaConexiones')
 var app = express();
+
+console.log(conexiones.getConexiones());
+console.log(conexiones.setConexion('holi'));
+console.log(conexiones.getConexiones());
+
+
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
