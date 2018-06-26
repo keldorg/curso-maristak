@@ -56,11 +56,18 @@ function seedTodoTable(callback) {
 function getTodoList(callback) {
   con.query("SELECT * FROM todo.todo", function (err, result, fields) {
     if (err) return callback(err);
-    console.log(result);
     return callback(null, result)
   });
 }
 
+function getTodo(id, callback) {
+    con.query("SELECT * FROM todo.todo WHERE id = " + id, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
 module.exports = {
-    getTodoList
+    getTodoList,
+    getTodo
 }

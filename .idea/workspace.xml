@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js" line="69" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f2138a9e-20c0-4739-b6ec-6ad73a634c32" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiCSV/factoriaConexiones.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiCSV/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/apiCSV/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiCSV/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/apiCSV/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/funciones.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,43 +21,42 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.58489585">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mysql.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="db.sql" pinned="false" current-in-tab="true">
-            <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="funciones.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/funciones.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="63" column="56" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,6 +67,7 @@
         <option value="$PROJECT_DIR$/apiCSV/factoriaConexiones.js" />
         <option value="$PROJECT_DIR$/apiCSV/user.js" />
         <option value="$PROJECT_DIR$/apiCSV/index.js" />
+        <option value="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/funciones.js" />
         <option value="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js" />
         <option value="$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js" />
       </list>
@@ -92,8 +95,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1044" />
+    <option name="width" value="800" />
+    <option name="height" value="600" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -127,6 +130,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -154,18 +158,24 @@
       <option name="presentableId" value="Default" />
       <updated>1526290303113</updated>
       <workItem from="1526290304253" duration="849000" />
-      <workItem from="1529402459330" duration="1252000" />
+      <workItem from="1529402459330" duration="1865000" />
+      <workItem from="1529586788015" duration="599000" />
+      <workItem from="1529671387715" duration="599000" />
+      <workItem from="1529728751101" duration="599000" />
+      <workItem from="1529908553643" duration="10599000" />
+      <workItem from="1529998148930" duration="4852000" />
+      <workItem from="1530006221811" duration="69000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2101000" />
+    <option name="totallyTimeSpent" value="20031000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.26125" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -191,6 +201,132 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/funciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="56" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/funciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apiCSV/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -233,13 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -247,17 +376,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Dokumentuak/HR/db.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+        <state relative-caret-position="945">
+          <caret line="63" column="56" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/funciones.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        <state relative-caret-position="275">
+          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
         </state>
       </provider>
     </entry>

@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var mysql = require('./mysql')
+var funciones = require('./funciones')
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -26,6 +27,42 @@ app.get('/todo', function (req, res) {
   mysql.getTodoList(function(err, usuarios) {
     res.send(usuarios)
   })
+});
+
+app.get('/todo/:id', function (req, res) {
+    console.log(req.params.id)
+    mysql.getTodo(req.params.id, function(err, todo) {
+        console.log(todo)
+        res.send(todo)
+    })
+});
+
+app.get('/holaMundo', function (req, res) {
+    res.send('Hola Mundo')
+});
+
+app.get('/5', function (req, res) {
+    res.send(true)
+});
+
+app.get('/dameUnNumero/:numero', function (req, res) {
+    res.send(true)
+});
+
+app.get('/dameUnNombre/:nombre', function (req, res) {
+    res.send(funciones.hola(req.params.nombre))
+});
+
+app.get('/saluda/:saludo/:nombre', function (req, res) {
+    res.send(req.params.saludo + ' ' + req.params.nombre)
+});
+
+app.get('/sumar/:a/:b', function (req, res) {
+    res.send(''+funciones.sumar(+req.params.a, +req.params.b))
+});
+
+app.get('/cualEsMasLargo/:a/:b', function (req, res) {
+    res.send(funciones.cualEsMasLargo(req.params.a, req.params.b))
 });
 
 app.get('/user/:id', function (req, res) {
