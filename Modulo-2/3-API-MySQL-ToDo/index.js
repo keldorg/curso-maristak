@@ -37,6 +37,19 @@ app.get('/todo/:id', function (req, res) {
     })
 });
 
+app.put('/todo/:id', function (req, res) {
+    mysql.updateTodo(req.params.id, req.body.nombre, req.body.realizado, function(err, todo) {
+        console.log(todo)
+        res.send(todo)
+    })
+});
+
+app.get('/todos/realizados', function (req, res) {
+    mysql.getTodosRealizados(function(err, todos) {
+        res.send(todos)
+    })
+});
+
 app.get('/holaMundo', function (req, res) {
     res.send('Hola Mundo')
 });
@@ -52,7 +65,7 @@ app.get('/dameUnNumero/:numero', function (req, res) {
 app.get('/dameUnNombre/:nombre', function (req, res) {
     res.send(funciones.hola(req.params.nombre))
 });
-
+9
 app.get('/saluda/:saludo/:nombre', function (req, res) {
     res.send(req.params.saludo + ' ' + req.params.nombre)
 });

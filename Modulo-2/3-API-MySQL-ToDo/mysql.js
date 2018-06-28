@@ -61,13 +61,33 @@ function getTodoList(callback) {
 }
 
 function getTodo(id, callback) {
+    console.log(id)
     con.query("SELECT * FROM todo.todo WHERE id = " + id, function (err, result, fields) {
         if (err) return callback(err);
         return callback(null, result)
     });
 }
 
+function getTodosRealizados(callback) {
+    con.query("SELECT * FROM todo.todo WHERE realizado = 1", function (err, result, fields) {
+        if (err) return callback(err)
+        return callback(null, result)
+    });
+}
+
+function updateTodo(id, nombre, realizado, callback) {
+    var sentencia = "UPDATE todo.todo SET nombre = '" + nombre + "', realizado = " +
+        realizado +" WHERE id = " + id
+    console.log(sentencia)
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err)
+        return callback(null, result)
+    });
+}
+
 module.exports = {
     getTodoList,
-    getTodo
+    getTodo,
+    getTodosRealizados,
+    updateTodo
 }
