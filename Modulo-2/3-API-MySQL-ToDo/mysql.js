@@ -85,9 +85,71 @@ function updateTodo(id, nombre, realizado, callback) {
     });
 }
 
+function createTodo(nombre, realizado, callback) {
+    con.query("SELECT * FROM todo.todo WHERE realizado = 1", function (err, result, fields) {
+        if (err) return callback(err)
+        return callback(null, result)
+    });
+}
+
+function cambiarARealizados(callback) {
+    con.query("UPDATE todo.todo SET realizado=1 WHERE realizado=0", function (err, result, fields) {
+        if (err) return callback(err)
+        return callback(null, result)
+    });
+}
+
+function getUser(id, callback) {
+    con.query("SELECT * FROM todo.usuarios WHERE id = " + id, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function getUsers(callback) {
+    con.query("SELECT * FROM todo.usuarios", function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function createUser(nombre, apellido, password, idioma, edad, activo, callback) {
+    const sentencia = `INSERT INTO todo.usuarios (nombre, apellido, password, idioma, edad, activo) 
+    VALUES ('${nombre}', '${apellido}', '${password}', '${idioma}', ${edad}, ${activo})`
+    con.query(sentencia, function (err, result, fields) {
+        console.log(err);
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function updateUser(id, nombre, apellido, password, idioma, edad, activo, callback) {
+    const sentencia = `UPDATE todo.usuarios  SET nombre='${nombre}', password='${password}', apellido='${apellido}', idioma='${idioma}', edad=${edad}, activo=${activo} 
+    WHERE id=${id}`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function deleteUser(id, callback) {
+    const sentencia = `DELETE FROM todo.usuarios WHERE id = ${id}`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
 module.exports = {
     getTodoList,
     getTodo,
     getTodosRealizados,
-    updateTodo
+    updateTodo,
+    createTodo,
+    cambiarARealizados,
+    getUser,
+    getUsers,
+    createUser,
+    updateUser,
+    deleteUser
 }

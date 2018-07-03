@@ -37,6 +37,12 @@ app.get('/todo/:id', function (req, res) {
     })
 });
 
+app.post('/todo', function (req, res) {
+    mysql.createTodo(req.body.nombre, req.body.realizado, function(err, todo) {
+        res.send(todo)
+    })
+});
+
 app.put('/todo/:id', function (req, res) {
     mysql.updateTodo(req.params.id, req.body.nombre, req.body.realizado, function(err, todo) {
         console.log(todo)
@@ -44,7 +50,14 @@ app.put('/todo/:id', function (req, res) {
     })
 });
 
+app.get('/todo/funciones/cambiarARealizados', function (req, res) {
+    mysql.cambiarARealizados(function(err, todos) {
+        res.send(todos)
+    })
+});
+
 app.get('/todos/realizados', function (req, res) {
+
     mysql.getTodosRealizados(function(err, todos) {
         res.send(todos)
     })
@@ -79,23 +92,36 @@ app.get('/cualEsMasLargo/:a/:b', function (req, res) {
 });
 
 app.get('/user/:id', function (req, res) {
-  // ESTÁ VACÍO
+    mysql.getUser(req.params.id, function(err, user) {
+        res.send(user)
+    })
+});
+
+app.get('/user', function (req, res) {
+    mysql.getUsers(function(err, users) {
+        res.send(users)
+    })
 });
 
 app.post('/user', function (req, res) {
-  // ESTÁ VACÍO
+    mysql.createUser(req.body.nombre, req.body.apellido, req.body.password, req.body.idioma, req.body.edad, req.body.activo, function(err, users) {
+        res.send(users)
+    })
 });
 
 app.put('/user/:id', function (req, res) {
-  // ESTÁ VACÍO
-});
+    mysql.updateUser(req.params.id, req.body.nombre, req.body.apellido, req.body.password, req.body.idioma, req.body.edad, req.body.activo, function(err, data) {
+        res.send(data)
+    })});
 
 app.patch('/user/:id', function (req, res) {
   // ESTÁ VACÍO
 });
 
 app.delete('/user/:id', function (req, res) {
-  // ESTÁ VACÍO
+    mysql.deleteUser(req.params.id, function(err, data) {
+        res.send(data)
+    });
 });
 
 app.listen(3000, function () {
