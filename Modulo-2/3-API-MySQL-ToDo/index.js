@@ -124,6 +124,48 @@ app.delete('/user/:id', function (req, res) {
     });
 });
 
+app.get('/user/funciones/edadMedia', function (req, res) {
+    mysql.edadMedia(function(err, data) {
+        res.send(data)
+    });
+});
+
+app.get('/user/funciones/usuariosActivosPorIdioma', function (req, res) {
+    mysql.activosPorIdioma(function(err, data) {
+        res.send(data)
+    });
+});
+
+app.get('/user/funciones/usuariosPorIdioma', function (req, res) {
+    mysql.porIdioma(function(err, data) {
+        res.send(data)
+    });
+});
+
+app.get('/user/funciones/mayores', function (req, res) {
+    mysql.mayoresEdad(function(err, data) {
+        res.send(data)
+    });
+});
+
+app.post('/login', function (req, res) {
+    mysql.getUserByNombre(req.body.nombre, function(err, user) {
+        console.log(user);
+        if (!user) {
+            res.status(404).send('User not found');
+        } else {
+            if (funciones.compararContraseñas(req.body.password, user.Password)) {
+                const sesion = funciones.crearSesion(user.Id, true)
+                mysql.guardarSesionBBDD(sesion, function(err, data) {
+                   if (!err) res.send(sesion)
+                })
+            } else {
+                res.status(500).send('Password error');
+            }
+        }
+    });
+});
+
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });

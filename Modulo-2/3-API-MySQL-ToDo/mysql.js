@@ -140,6 +140,64 @@ function deleteUser(id, callback) {
     });
 }
 
+function edadMedia(callback) {
+    const sentencia = `SELECT AVG(edad) FROM todo.usuarios`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function activosPorIdioma(callback) {
+    const sentencia = `SELECT idioma, COUNT(*) from todo.usuarios WHERE activo = 1 GROUP BY idioma`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function porIdioma(callback) {
+    const sentencia = `SELECT idioma, COUNT(*) from todo.usuarios GROUP BY idioma`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function mayoresEdad(callback) {
+    const sentencia = `SELECT nombre, apellido FROM todo.usuarios WHERE edad > 17`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function getUserByNombre(name, callback) {
+    const sentencia = `SELECT * FROM todo.usuarios WHERE Nombre = '${name}'`
+    console.log(sentencia);
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        console.log(err)
+        console.log(result);
+        if (result.length > 0) {
+            return callback(null, result[0])
+        } else {
+            return callback(null, null)
+        }
+    });
+}
+
+function guardarSesionBBDD (sesion, callback) {
+    const sentencia = `INSERT INTO todo.sesiones (idUser, fechaLimite, token, activo) 
+    VALUES (${sesion.idUser}, '${sesion.fechaLimite}', '${sesion.token}', ${sesion.activo})`
+    console.log(sentencia)
+    con.query(sentencia, function (err, result, fields) {
+        console.log(err);
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
 module.exports = {
     getTodoList,
     getTodo,
@@ -151,5 +209,11 @@ module.exports = {
     getUsers,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    edadMedia,
+    mayoresEdad,
+    porIdioma,
+    activosPorIdioma,
+    getUserByNombre,
+    guardarSesionBBDD
 }
