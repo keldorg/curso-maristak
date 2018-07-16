@@ -4,6 +4,7 @@ var con = mysql.createConnection({
   host: "localhost",
   user: "keldor",
   password: "password",
+  timezone: 'utc'
   // database: "todo"
 });
 
@@ -192,7 +193,40 @@ function guardarSesionBBDD (sesion, callback) {
     VALUES (${sesion.idUser}, '${sesion.fechaLimite}', '${sesion.token}', ${sesion.activo})`
     console.log(sentencia)
     con.query(sentencia, function (err, result, fields) {
+
         console.log(err);
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function buscarUsuarioPorSesion(token, callback) {
+    const sentencia = `SELECT e.*
+    FROM todo.usuarios e JOIN todo.sesiones d ON e.id = d.idUser 
+    WHERE d.token = '${token}'`
+    console.log(sentencia)
+    con.query(sentencia, function (err, result, fields) {
+        console.log(result)
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function buscarSesionActiva(token, callback) {
+    const sentencia = `SELECT * FROM todo.sesiones WHERE token = '${token}' AND activo = 1`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        if (result.length > 0) {
+            return callback(null, result[0])
+        } else {
+            return callback(null, null)
+        }
+    });
+}
+
+function cerrarSesion(token, callback) {
+    const sentencia = `UPDATE todo.sesiones SET activo=0 WHERE token = '${token}'`
+    con.query(sentencia, function (err, result, fields) {
         if (err) return callback(err);
         return callback(null, result)
     });
@@ -215,5 +249,8 @@ module.exports = {
     porIdioma,
     activosPorIdioma,
     getUserByNombre,
-    guardarSesionBBDD
+    guardarSesionBBDD,
+    buscarUsuarioPorSesion,
+    buscarSesionActiva,
+    cerrarSesion
 }

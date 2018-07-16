@@ -24,7 +24,8 @@ app.use(function (req, res, next) {
 });
 
 app.get('/todo', function (req, res) {
-  mysql.getTodoList(function(err, usuarios) {
+    console.log(req.get('token'));
+    mysql.getTodoList(function(err, usuarios) {
     res.send(usuarios)
   })
 });
@@ -165,6 +166,32 @@ app.post('/login', function (req, res) {
         }
     });
 });
+
+app.get('/userByToken/:token', function (req, res) {
+    const token = req.params.token
+    mysql.buscarSesionActiva(token, function(err, sesion) {
+        console.log('Info de sesión:')
+        console.log(sesion);
+        // console.log(sesion.fechaLimite, typeof sesion.fechaLimite);
+        // console.log(sesion.fechaLimite.getTime());
+        if (!sesion) {
+            res.status(404).send('Session not found');
+        } else if (!funciones.esMayorFecha(sesion.fechaLimite)) {
+            res.status(401).send('Session has expired');
+        } else {
+            mysql.buscarUsuarioPorSesion(token, function(err, user) {
+                res.send(user)
+            })
+        }
+    })
+})
+
+app.get('/logout/:token', function (req, res) {
+    const token = req.params.token
+    mysql.cerrarSesion(token, function(err, respuesta) {
+        res.send(respuesta)
+    })
+})
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
