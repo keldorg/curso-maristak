@@ -11,13 +11,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Headers', '*');
 
   // Pass to next layer of middleware
   next();
@@ -25,29 +25,47 @@ app.use(function (req, res, next) {
 
 app.get('/todo', function (req, res) {
     console.log(req.get('token'));
-    mysql.getTodoList(function(err, usuarios) {
+    mysql.getTodoListByToken(req.get('token'), function(err, usuarios) {
     res.send(usuarios)
   })
 });
 
 app.get('/todo/:id', function (req, res) {
     console.log(req.params.id)
-    mysql.getTodo(req.params.id, function(err, todo) {
+    console.log(req.get('token'))
+    mysql.getTodoByToken(req.get('token'), req.params.id, function(err, todo) {
         console.log(todo)
         res.send(todo)
     })
 });
 
 app.post('/todo', function (req, res) {
-    mysql.createTodo(req.body.nombre, req.body.realizado, function(err, todo) {
-        res.send(todo)
+    mysql.getIdUserByToken(req.get('token'), function(err, idUser) {
+        const nombre = req.body.nombre
+        const realizado = req.body.realizado
+        mysql.createTodo(nombre, realizado, idUser, function(err, todo) {
+            res.send(todo)
+        })
     })
 });
 
 app.put('/todo/:id', function (req, res) {
-    mysql.updateTodo(req.params.id, req.body.nombre, req.body.realizado, function(err, todo) {
-        console.log(todo)
-        res.send(todo)
+    mysql.getIdUserByToken(req.get('token'), function(err, idUser) {
+        const nombre = req.body.nombre
+        const realizado = req.body.realizado
+        mysql.updateTodo(req.params.id, nombre, realizado, idUser, function(err, todo) {
+            console.log(todo)
+            res.send(todo)
+        })
+    })
+});
+
+app.delete('/todo/:id', function (req, res) {
+    mysql.getIdUserByToken(req.get('token'), function(err, idUser) {
+        if (!idUser) return res.send(404)
+        mysql.deleteTodo(req.params.id, idUser,  function(err, data) {
+            res.send(data)
+        });
     })
 });
 
@@ -150,6 +168,8 @@ app.get('/user/funciones/mayores', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
+    console.log(req.body)
+    console.log(req.body)
     mysql.getUserByNombre(req.body.nombre, function(err, user) {
         console.log(user);
         if (!user) {
@@ -190,6 +210,32 @@ app.get('/logout/:token', function (req, res) {
     const token = req.params.token
     mysql.cerrarSesion(token, function(err, respuesta) {
         res.send(respuesta)
+    })
+})
+
+app.post('/friends', function (req, res) {
+    const idFriend = req.body.idFriend
+    mysql.getIdUserByToken(req.get('token'), function (err, idUser) {
+        mysql.createFriend(idUser, idFriend, function (err, result) {
+            res.send(result)
+        })
+    })
+})
+
+app.delete('/friends/:idFriend', function (req, res) {
+    const idFriend = req.params.idFriend
+    mysql.getIdUserByToken(req.get('token'), function (err, idUser) {
+        mysql.deleteFriend(idUser, idFriend, function (err, result) {
+            res.send(result)
+        })
+    })
+})
+
+app.get('/friends', function (req, res) {
+    mysql.getIdUserByToken(req.get('token'), function (err, idUser) {
+        mysql.getFriends(idUser, function (err, result) {
+            res.send(result)
+        })
     })
 })
 

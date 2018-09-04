@@ -61,9 +61,29 @@ function getTodoList(callback) {
   });
 }
 
+function getTodoListByToken(token, callback) {
+    const sentencia = `SELECT t.* FROM todo t JOIN usuarios u ON t.idUser = u.Id JOIN sesiones s ON u.Id = s.idUser WHERE s.token = '${token}'`
+    con.query("SELECT * FROM todo.todo", function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
 function getTodo(id, callback) {
     console.log(id)
     con.query("SELECT * FROM todo.todo WHERE id = " + id, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function getTodoByToken(token, id, callback) {
+    const sentencia = `SELECT t.* 
+    FROM todo.todo t JOIN todo.usuarios u ON t.idUser = u.Id 
+    JOIN todo.sesiones s ON u.Id = s.idUser 
+    WHERE s.token = '${token}' AND t.id = ${id}
+    AND s.activo = 1 AND s.fechaLimite >= CURDATE()`
+    con.query(sentencia, function (err, result, fields) {
         if (err) return callback(err);
         return callback(null, result)
     });
@@ -76,9 +96,10 @@ function getTodosRealizados(callback) {
     });
 }
 
-function updateTodo(id, nombre, realizado, callback) {
+function updateTodo(id, nombre, realizado, idUser, callback) {
     var sentencia = "UPDATE todo.todo SET nombre = '" + nombre + "', realizado = " +
-        realizado +" WHERE id = " + id
+        realizado + ", idUser = " +
+        idUser +" WHERE id = " + id
     console.log(sentencia)
     con.query(sentencia, function (err, result, fields) {
         if (err) return callback(err)
@@ -86,8 +107,10 @@ function updateTodo(id, nombre, realizado, callback) {
     });
 }
 
-function createTodo(nombre, realizado, callback) {
-    con.query("SELECT * FROM todo.todo WHERE realizado = 1", function (err, result, fields) {
+function createTodo(nombre, realizado, idUser, callback) {
+    const sentencia = `INSERT INTO todo.todo (nombre, realizado, idUser) 
+    VALUES ('${nombre}', '${realizado}', '${idUser}')`
+    con.query(sentencia, function (err, result, fields) {
         if (err) return callback(err)
         return callback(null, result)
     });
@@ -232,6 +255,57 @@ function cerrarSesion(token, callback) {
     });
 }
 
+function getIdUserByToken(token, callback) {
+    const sentencia = `SELECT idUser FROM todo.sesiones 
+    WHERE token = '${token}' 
+    AND activo = 1 
+    AND fechaLimite > NOW()`
+    console.log(sentencia)
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        if (result.length > 0) {
+            return callback(null, result[0].idUser)
+        }
+        return callback(null, null)
+    });
+}
+
+function deleteTodo(id, idUser, callback) {
+    const sentencia = `DELETE FROM todo.todo WHERE id = ${id} AND idUser = ${idUser}`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function createFriend(idUser, idFriend, callback) {
+    const sentencia = `INSERT INTO todo.amigos (idUser, idFriend) 
+    VALUES ('${idUser}', '${idFriend}')`
+    console.log(sentencia)
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err)
+        return callback(null, result)
+    });
+}
+
+function deleteFriend(idUser, idFriend, callback) {
+    const sentencia = `DELETE FROM todo.amigos WHERE idUser = ${idUser} AND idFriend = ${idFriend}`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
+function getFriends(idUser, callback) {
+    const sentencia = `SELECT u.* FROM todo.usuarios u 
+    JOIN todo.amigos a ON u.id = a.idUser 
+    WHERE a.idUser = ${idUser}`
+    con.query(sentencia, function (err, result, fields) {
+        if (err) return callback(err);
+        return callback(null, result)
+    });
+}
+
 module.exports = {
     getTodoList,
     getTodo,
@@ -252,5 +326,12 @@ module.exports = {
     guardarSesionBBDD,
     buscarUsuarioPorSesion,
     buscarSesionActiva,
-    cerrarSesion
+    cerrarSesion,
+    getTodoByToken,
+    getTodoListByToken,
+    getIdUserByToken,
+    deleteTodo,
+    createFriend,
+    deleteFriend,
+    getFriends
 }

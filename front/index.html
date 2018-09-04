@@ -3,9 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>front</title>
+    <script>
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.getResponseHeader("Last-Modified"))
+        }
+      };
+      xhttp.open("GET", "http://localhost:3000/todo", true);
+      xhttp.send();
+    </script>
   </head>
   <body>
-    <div id="app"></div>
-    <script src="/dist/build.js"></script>
+
   </body>
 </html>

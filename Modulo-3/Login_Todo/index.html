@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>front</title>
+    <script src="jquery-3.3.1.js"></script>
+    <!-- <script>
+    var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          console.log(this.response)
+          console.log(JSON.parse(this.response))
+          const data = JSON.parse(this.response)
+          let resultado = ''
+          for (var i = 0; i <data.length; i++) {
+                resultado += `<li>${data[i].nombre}<button onclick='eliminarTarea(${i})'>Eliminar</button></li>`
+            }
+            document.getElementById('listado').innerHTML = resultado
+          console.log(this.getResponseHeader("Last-Modified"))
+        }
+      };
+      xhttp.open("GET", "http://localhost:3000/todo", true);
+      xhttp.send();
+    </script> -->
+    <script type="text/javascript">
+    	$.ajax({
+		  url: "http://localhost:3000/todo",
+		})
+		  .done(function( data ) {
+		    if ( console && console.log ) {
+		      console.log( "Sample of data:", data.slice( 0, 100 ) );
+		      console.log(data)
+		    }
+		  });
+    </script>
+    <style>
+      button {
+        margin: 0 10px;
+      }
+      li {
+        margin: 10px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <ul id="listado">
+    </ul>
+  </body>
+</html>
