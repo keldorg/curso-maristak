@@ -62,9 +62,16 @@ function getTodoList(callback) {
 }
 
 function getTodoListByToken(token, callback) {
-    const sentencia = `SELECT t.* FROM todo t JOIN usuarios u ON t.idUser = u.Id JOIN sesiones s ON u.Id = s.idUser WHERE s.token = '${token}'`
-    con.query("SELECT * FROM todo.todo", function (err, result, fields) {
+    const sentencia = `SELECT t.* FROM todo.todo t 
+    JOIN todo.usuarios u ON t.idUser = u.Id 
+    JOIN todo.sesiones s ON u.Id = s.idUser 
+    WHERE s.token = '${token}'`
+    console.log(sentencia);
+    con.query(sentencia, function (err, result, fields) {
+        console.log('hemen');
+        console.log(err);
         if (err) return callback(err);
+        console.log(result);
         return callback(null, result)
     });
 }
@@ -83,8 +90,10 @@ function getTodoByToken(token, id, callback) {
     JOIN todo.sesiones s ON u.Id = s.idUser 
     WHERE s.token = '${token}' AND t.id = ${id}
     AND s.activo = 1 AND s.fechaLimite >= CURDATE()`
+    console.log(sentencia);
     con.query(sentencia, function (err, result, fields) {
         if (err) return callback(err);
+        console.log(result);
         return callback(null, result)
     });
 }
@@ -258,11 +267,13 @@ function cerrarSesion(token, callback) {
 function getIdUserByToken(token, callback) {
     const sentencia = `SELECT idUser FROM todo.sesiones 
     WHERE token = '${token}' 
-    AND activo = 1 
-    AND fechaLimite > NOW()`
+    AND activo = 1
+    AND fechaLimite > curdate()`
+    // AND fechaLimite > NOW()
     console.log(sentencia)
     con.query(sentencia, function (err, result, fields) {
         if (err) return callback(err);
+        console.log(result);
         if (result.length > 0) {
             return callback(null, result[0].idUser)
         }

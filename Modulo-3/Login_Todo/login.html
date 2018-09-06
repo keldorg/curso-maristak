@@ -3,6 +3,7 @@
 	<title>Ejercicio Formulario</title>
   <script src="jquery-3.3.1.js"></script>
 	<script type="text/javascript">
+    let token = null
     function validateForm() {
       /*if(document.getElementById('nombre').value === email && 
         document.getElementById('password').value === password) {
@@ -28,8 +29,10 @@
         console.log(data)
         document.getElementById('login').style.display = 'none'
         document.getElementById('menu-top').style.display = 'block'
-        getUsuario(data.token)
-        getTareas(data.token)
+        token = data.token
+        getUsuario()
+        getTareas()
+        mostrarAddTarea()
       })
       .fail(function(data) {
         console.log('Error')
@@ -43,7 +46,7 @@
       });
     }
 
-    function getUsuario(token) {
+    function getUsuario() {
       console.log(token)
       $.ajax({
         url: "http://localhost:3000/userByToken/" + token,
@@ -68,7 +71,7 @@
       });
     }
 
-    function getTareas(token) {
+    function getTareas() {
       console.log(token)
       $.ajax({
         url: "http://localhost:3000/todo/",
@@ -83,7 +86,12 @@
         console.log(data)
         let tareas = ''
         for (let i = 0; i < data.length; i++) {
-          tareas += `<li>${data[i].nombre}</li>`
+          if (data[i].realizado) {
+            tareas += '<li style="text-decoration: line-through">'
+          } else {
+            tareas += '<li>'
+          }
+          tareas += `${data[i].nombre}<button onclick="eliminarTarea('${data[i].id}')">Eliminar</button></li>`
         }
         console.log(tareas)
         document.getElementById('tareas').innerHTML = tareas
@@ -96,6 +104,66 @@
       .always(function() {
         console.log( "finished" );
       });
+    }
+
+    function eliminarTarea(id) {
+      console.log(  + id)
+      console.log('Soy el token: ' + token)
+      $.ajax({
+        url: "http://localhost:3000/todo/" + id,
+        headers: {
+            'token':token
+        },
+        type: "DELETE",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        console.log( "Sample of Tareas:");
+        console.log(data)
+        getTareas(token)
+      })
+      .fail(function(data) {
+        console.log('Error')
+        console.log(data)
+      })
+      .always(function() {
+        console.log( "finished" );
+      });
+    }
+
+    function addTarea() {
+      console.log('hola mundo')
+      console.log(document.getElementById('add-tarea').value)
+      var tarea = document.getElementById('add-tarea').value
+
+      $.ajax({
+        url: "http://localhost:3000/todo/",
+        headers: {
+            'token':token
+        },
+        data: {
+          "nombre": tarea,
+          "realizado": 0
+        },
+        type: "POST",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        console.log( "Sample of Tareas:");
+        console.log(data)
+        getTareas()
+      })
+      .fail(function(data) {
+        console.log('Error')
+        console.log(data)
+      })
+      .always(function() {
+        console.log( "finished" );
+      });
+    }
+
+    function mostrarAddTarea() {
+      document.getElementById('div-add-tarea').style.display = 'block'
     }
 	</script>
   <style>
@@ -113,7 +181,7 @@
       width: 100%;
     }
     .boton {
-      width: auto;
+         width: auto;
       margin: 50px auto;
       padding: 5px 20px;
       display: block;
@@ -141,6 +209,9 @@
     #tareas {
       display: none;
     }
+    #div-add-tarea {
+      display: none;
+    }
   </style>
 </head>
 
@@ -161,6 +232,11 @@
     <div class="left"><span>Tareas</span></div>
     <div class="right"><span id="hola"></span></div>
   </div>
-  <ul id="tareas"></ul>
+  <ul id="tareas">
+  </ul>
+  <div id="div-add-tarea">
+    <input id="add-tarea" type="text" name="add-tarea" placeholder="Añade una nueva tarea">
+    <input onclick="addTarea()"  class="boton" type="submit" name="submitTarea">
+  </div>
 </body>
 </html>

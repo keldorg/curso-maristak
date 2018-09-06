@@ -25,8 +25,8 @@ app.use(function (req, res, next) {
 
 app.get('/todo', function (req, res) {
     console.log(req.get('token'));
-    mysql.getTodoListByToken(req.get('token'), function(err, usuarios) {
-    res.send(usuarios)
+    mysql.getTodoListByToken(req.get('token'), function(err, tareas) {
+    res.send(tareas)
   })
 });
 
@@ -40,6 +40,8 @@ app.get('/todo/:id', function (req, res) {
 });
 
 app.post('/todo', function (req, res) {
+    console.log('HOLA');
+    console.log(req.body);
     mysql.getIdUserByToken(req.get('token'), function(err, idUser) {
         const nombre = req.body.nombre
         const realizado = req.body.realizado
@@ -61,6 +63,7 @@ app.put('/todo/:id', function (req, res) {
 });
 
 app.delete('/todo/:id', function (req, res) {
+    console.log('hemen borrar');
     mysql.getIdUserByToken(req.get('token'), function(err, idUser) {
         if (!idUser) return res.send(404)
         mysql.deleteTodo(req.params.id, idUser,  function(err, data) {
