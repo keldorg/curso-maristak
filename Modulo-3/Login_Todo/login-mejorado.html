@@ -1,0 +1,225 @@
+<html>
+<head>
+	<title>Ejercicio Formulario</title>
+  <script src="jquery-3.3.1.js"></script>
+	<script type="text/javascript">
+    let token = null
+    let tareas
+    function validateForm() {
+      /*if(document.getElementById('nombre').value === email && 
+        document.getElementById('password').value === password) {
+        document.getElementById('resultado').style.display = 'block'
+        document.getElementById('resultado').style.color = "green"
+      } else {
+        document.getElementById('resultado').style.color = "red"
+        document.getElementById('resultado').style.display = 'block'
+      }*/
+      login(document.getElementById('nombre').value, document.getElementById('password').value)
+    }
+
+    function login(nombre, password) {
+      $.ajax({
+        url: "http://localhost:3000/login",
+        type: "POST",
+        data: {"nombre": nombre, "password": password},
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        document.getElementById('login').style.display = 'none'
+        document.getElementById('menu-top').style.display = 'block'
+        token = data.token
+        getUsuario()
+        getTareas()
+        mostrarAddTarea()
+      })
+      .fail(function(data) {
+        document.getElementById('resultado').innerHTML = data.responseText
+        document.getElementById('resultado').style.color = "red"
+        document.getElementById('resultado').style.display = 'block'
+      })
+    }
+
+    function getUsuario() {
+      $.ajax({
+        url: "http://localhost:3000/userByToken/" + token,
+        type: "GET",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+          document.getElementById('hola').innerHTML = 'Hola ' + data[0].Nombre
+      })
+    }
+
+    function getTareas() {
+      $.ajax({
+        url: "http://localhost:3000/todo/",
+        headers: {
+            'token':token
+        },
+        type: "GET",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        tareas = data
+        renderizarTareas()
+      })
+    }
+
+    function eliminarTarea(id) {
+      $.ajax({
+        url: "http://localhost:3000/todo/" + id,
+        headers: {
+            'token':token
+        },
+        type: "DELETE",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        getTareas(token)
+      })
+    }
+
+    function addTarea() {
+      var tarea = document.getElementById('add-tarea').value
+
+      if (tarea == ''){
+        return alert('Las tareas tiene que tener un nombre!')
+      }
+
+      $.ajax({
+        url: "http://localhost:3000/todo/",
+        headers: {
+            'token':token
+        },
+        data: {
+          "nombre": tarea,
+          "realizado": 0
+        },
+        type: "POST",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        getTareas()
+      })
+    }
+
+    function realizarTarea(id, nombre) {
+      $.ajax({
+        url: "http://localhost:3000/todo/" + id,
+        headers: {
+            'token':token
+        },
+        data: {
+          "nombre": nombre,
+          "realizado": 1
+        },
+        type: "PUT",
+        dataType: "JSON"
+      })
+      .done(function(data) {
+        getTareas(token)
+      })
+    }
+
+    function mostrarAddTarea() {
+      document.getElementById('div-add-tarea').style.display = 'block'
+    }
+
+    function renderizarTareas() {
+      let tareasHTML = ''
+      for (let i = 0; i < tareas.length; i++) {
+        if (tareas[i].realizado) {
+          tareasHTML += '<li class="subrayado">'
+        } else {
+          tareasHTML += '<li>'
+        }
+
+        tareasHTML += `${tareas[i].nombre}<button onclick="eliminarTarea('${tareas[i].id}')">Eliminar</button>`
+
+        if (!tareas[i].realizado) {
+          tareasHTML += `<button onclick="realizarTarea('${tareas[i].id}', '${tareas[i].nombre}')">Realizada</button></li>`
+        } else {
+          tareasHTML += '</li>'
+        }
+      }
+      document.getElementById('tareas').innerHTML = tareasHTML
+      document.getElementById('tareas').style.display = 'block'
+    }
+	</script>
+  <style>
+    .form-login {
+      width: 200px;
+      border: 1px solid;
+      margin: 150px auto;
+      padding: 20px 30px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px 0;
+    }
+    input {
+      width: 100%;
+    }
+    .boton {
+         width: auto;
+      margin: 50px auto;
+      padding: 5px 20px;
+      display: block;
+    }
+    #resultado {
+      display: none;
+    }
+    #menu-top {
+      height: 50px;
+      width: 100%;
+      border: 1px solid;
+      display: none;
+    }
+    .left {
+      line-height: 50px;
+      display: inline-block;
+      padding: 0 10px;
+    }
+    .right {
+      line-height: 50px;
+      display: inline-block;
+      float: right;
+      padding: 0 10px;
+    }
+    #tareas {
+      display: none;
+    }
+    #div-add-tarea {
+      display: none;
+    }
+    .subrayado {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+	<div id="login" class="form-login" name="myForm">
+		<label>
+			Nombre
+		</label>
+		<input id="nombre" type="text" name="nombre">
+		<label>
+			Contraseña
+		</label>
+		<input id="password" type="password" name="password">
+    <input onclick="validateForm()"  class="boton" type="submit" name="submit">
+    <p id="resultado"></p>
+	</div>
+  <div id="menu-top">
+    <div class="left"><span>Tareas</span></div>
+    <div class="right"><span id="hola"></span></div>
+  </div>
+  <ul id="tareas">
+  </ul>
+  <div id="div-add-tarea">
+    <input id="add-tarea" type="text" name="add-tarea" placeholder="Añade una nueva tarea">
+    <input onclick="addTarea()"  class="boton" type="submit" name="submitTarea">
+  </div>
+</body>
+</html>
