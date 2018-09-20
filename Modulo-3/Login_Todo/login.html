@@ -90,7 +90,7 @@
         dataType: "JSON"
       })
       .done(function(data) {
-        getTareas(token)
+        getTareas()
       })
     }
 
@@ -114,6 +114,7 @@
         dataType: "JSON"
       })
       .done(function(data) {
+        document.getElementById('add-tarea').value = ''
         getTareas()
       })
     }
@@ -132,7 +133,7 @@
         dataType: "JSON"
       })
       .done(function(data) {
-        getTareas(token)
+        getTareas()
       })
     }
 
