@@ -7,14 +7,6 @@
     let token = null
     let tareas
     function validateForm() {
-      /*if(document.getElementById('nombre').value === email && 
-        document.getElementById('password').value === password) {
-        document.getElementById('resultado').style.display = 'block'
-        document.getElementById('resultado').style.color = "green"
-      } else {
-        document.getElementById('resultado').style.color = "red"
-        document.getElementById('resultado').style.display = 'block'
-      }*/
       login(document.getElementById('nombre').value, document.getElementById('password').value)
     }
 
@@ -239,18 +231,19 @@
   </nav>
   <div class="container">
     <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div id="login" class="login-container">
-        <div class="form-group">
-          <label for="nombre">Usuario</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Usuario">
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" class="form-control" id="password" placeholder="Introduce una contraseña">
-        </div>
-        <button onclick="validateForm()" type="submit" class="btn btn-primary">Login</button>
-        <div id="resultado" class="alert alert-danger" role="alert">
+      <div class="col-md-6">
+        <div id="login" class="login-container">
+          <div class="form-group">
+            <label for="nombre">Usuario</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Usuario">
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Introduce una contraseña">
+          </div>
+          <button onclick="validateForm()" type="submit" class="btn btn-primary">Login</button>
+          <div id="resultado" class="alert alert-danger" role="alert">
+          </div>
         </div>
       </div>
     </div>

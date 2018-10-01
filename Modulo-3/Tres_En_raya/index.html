@@ -1,0 +1,154 @@
+<html>
+<head>
+	<title>Ejercicio Tres en raya</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script type="text/javascript">
+    let turno = 0
+    let finalizado = false;
+    function press(position) {
+      if (document.getElementById(''+position).innerHTML === '' && !finalizado) {
+        turno++
+        if (turno % 2 === 0) {
+          document.getElementById(''+position).innerHTML = '<span>X</span>'
+        } else {
+          document.getElementById(''+position).innerHTML = '<span>O</span>'
+        }
+        comprobarJugada()
+      }
+    }
+    function comprobarJugada() {
+      let tresEnRaya = false
+      let ganador = ''
+      if (esTresEnRaya(0,1,2)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+0).innerHTML[6]
+      }
+      if (esTresEnRaya(3,4,5)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+3).innerHTML[6]
+      }
+      if (esTresEnRaya(6,7,8)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+6).innerHTML[6]
+      }
+      if (esTresEnRaya(0,3,6)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+0).innerHTML[6]
+      }
+      if (esTresEnRaya(1,4,7)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+1).innerHTML[6]
+      }
+      if (esTresEnRaya(2,5,8)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+2).innerHTML[6]
+      }
+      if (esTresEnRaya(0,4,8)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+0).innerHTML[6]
+      }
+      if (esTresEnRaya(2,4,6)) {
+        tresEnRaya = true
+        ganador = document.getElementById(''+2).innerHTML[6]
+      }
+
+      if (tresEnRaya) {
+        finalizado = true;
+        document.getElementById('ganador').innerHTML = `<p>Han ganado las: ${ganador}</p>`
+        document.getElementById('ganador').style.display = 'block'
+        document.getElementById('reiniciar').style.display = 'block'
+      }
+    }
+    function esTresEnRaya(pos1, pos2, pos3) {
+      if (document.getElementById(''+pos1).innerHTML === document.getElementById(''+pos2).innerHTML && document.getElementById(''+pos2).innerHTML === document.getElementById(''+pos3).innerHTML && document.getElementById(''+pos2).innerHTML !== '')  {
+        return true
+      } else {
+        return false
+      }
+    }
+    function jugarDeNuevo() {
+      for( let i = 0; i < 9; i++) {
+        document.getElementById(''+i).innerHTML = ''
+      }
+      turno = 0
+      finalizado = false;
+      document.getElementById('ganador').style.display = 'none'
+      document.getElementById('reiniciar').style.display = 'none'
+    }
+	</script>
+  <style>
+    #tablero {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .fila {
+      display: block;
+      box-sizing: border-box;
+      height: 200px;
+      width: 600px;
+      font-size: 0;
+    }
+    .fila > div {
+      border: 1px solid;
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      box-sizing: border-box;
+      font-size: 15px;
+      float: left;
+      text-align: center;
+      cursor: pointer;
+    }
+    .fila > div > span {
+      font-size: 65px;
+      line-height: 200px;
+    }
+    #ganador p {
+      text-align: center;
+      font-size: 60px;
+    }
+    #reiniciar {
+      margin: 40px;
+      display: none;
+    }
+    #reiniciar a {
+      margin: 0 auto;
+      display: block;
+      width: 200px;
+      height: 50px;
+      line-height: 40px;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <div id="ganador" class="popup">
+    
+  </div>
+  <div id="reiniciar" class="row">
+    <a class="btn btn-warning" onclick="jugarDeNuevo()">JUGAR DE NUEVO</a>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div id="tablero">
+        <div class="fila">
+          <div id="0" onclick="press(0)"></div>
+          <div id="1" onclick="press(1)"></div>
+          <div id="2" onclick="press(2)"></div>
+        </div>
+        <div class="fila">
+          <div id="3" onclick="press(3)"></div>
+          <div id="4" onclick="press(4)"></div>
+          <div id="5" onclick="press(5)"></div>
+        </div>
+        <div class="fila">
+          <div id="6" onclick="press(6)"></div>
+          <div id="7" onclick="press(7)"></div>
+          <div id="8" onclick="press(8)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
