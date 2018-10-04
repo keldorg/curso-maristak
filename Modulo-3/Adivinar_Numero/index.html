@@ -1,0 +1,88 @@
+<html>
+<head>
+	<title>Ejercicio Tres en raya</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script type="text/javascript">
+    let turno = 0
+    let finalizado = false
+    let nombre = ''
+    let numero = null
+
+    function empezar() {
+      nombre = document.getElementById('nombre').value
+      numero = Math.floor((Math.random() * 100) + 1);
+      document.getElementById('login').style.display = 'none'
+      document.getElementById('jugar').style.display = 'block'
+    }
+
+    function adivinar() {
+      let numeroNuevo = document.getElementById('adivina').value
+      if (numeroNuevo > numero) {
+        document.getElementById('info').innerHTML = 'El número introducido es mayor!'
+      }
+      if (numeroNuevo < numero) {
+        document.getElementById('info').innerHTML = 'El número introducido es menor!'
+      }
+      if (numeroNuevo == numero) {
+        document.getElementById('felicidades').innerHTML = `¡Felicidades ${nombre}, has acertado!`
+        document.getElementById('jugar').style.display = 'none'
+        document.getElementById('reiniciar').style.display = 'block'
+      }
+    }
+    function jugarDeNuevo() {
+      numero = Math.floor((Math.random() * 100) + 1);
+      document.getElementById('login').style.display = 'none'
+      document.getElementById('jugar').style.display = 'block'
+      document.getElementById('reiniciar').style.display = 'none'
+    }
+	</script>
+  <style>
+    #reiniciar {
+      margin: 40px;
+      display: none;
+    }
+    #reiniciar a {
+      margin: 0 auto;
+      display: block;
+      width: 200px;
+      height: 50px;
+      line-height: 40px;
+    }
+    #jugar {
+      display: none;
+    }
+    p {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <div id="reiniciar" class="row">
+    <p id="felicidades"></p>
+    <a class="btn btn-warning" onclick="jugarDeNuevo()">JUGAR DE NUEVO</a>
+  </div>
+  <div id="login" class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-group">
+        <label for="nombre">Introduce tu Nombre:</label>
+        <input type="text" class="form-control" id="nombre">
+      </div>
+      <a class="btn btn-info" onclick="empezar()">JUGAR</a>
+    </div>
+  </div>
+  <div id="jugar" class="row justify-content-center">
+    <div class="col-6">
+      <div>
+        <p id="info"></p>
+      </div>
+      <div class="form-group">
+        <label for="adivina">Acierta el número secreto!</label>
+        <input type="text" class="form-control" id="adivina">
+      </div>
+      <a class="btn btn-info" onclick="adivinar()">ADIVINAR</a>
+    </div>
+  </div>
+
+</body>
+</html>
