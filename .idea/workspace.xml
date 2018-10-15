@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2138a9e-20c0-4739-b6ec-6ad73a634c32" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modulo-3/Login_Todo/login-mejorado.html" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo-3/Login_Todo/login-mejorado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modulo-3/Test/spec/test1.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo-3/Test/spec/test1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modulo-3/Test/src/math.js" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo-3/Test/src/math.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modulo-3/Templates/template1.html" beforeDir="false" afterPath="$PROJECT_DIR$/Modulo-3/Templates/template1.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test1.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modulo-3/Test/spec/test1.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -43,8 +41,17 @@
       <file leaf-file-name="math.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Modulo-3/Test/src/math.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Modulo-3/Tres_En_raya/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="57" column="66" lean-forward="true" selection-start-line="57" selection-start-column="66" selection-end-line="57" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -112,9 +119,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="238" />
-    <option name="width" value="1296" />
-    <option name="height" value="1044" />
+    <option name="x" value="616" />
+    <option name="width" value="1304" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -240,15 +247,19 @@
       <workItem from="1537943695921" duration="599000" />
       <workItem from="1537968254170" duration="599000" />
       <workItem from="1538030000485" duration="599000" />
+      <workItem from="1538547890334" duration="978000" />
+      <workItem from="1539066389309" duration="599000" />
+      <workItem from="1539153481334" duration="599000" />
+      <workItem from="1539238827426" duration="599000" />
+      <workItem from="1539568201155" duration="693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170680000" />
+    <option name="totallyTimeSpent" value="174148000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="800" y="0" width="1920" height="1044" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.030448718" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -258,7 +269,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.01986755" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.018763797" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -277,13 +288,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/mysql.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="109" column="44" lean-forward="true" selection-start-line="109" selection-start-column="44" selection-end-line="109" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modulo-2/3-API-MySQL-ToDo/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="795">
@@ -616,17 +620,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Modulo-3/Test/src/math.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Modulo-3/Test/spec/test1.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-3/Test/src/math.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modulo-3/Tres_En_raya/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="57" column="66" lean-forward="true" selection-start-line="57" selection-start-column="66" selection-end-line="57" selection-end-column="66" />
         </state>
       </provider>
     </entry>

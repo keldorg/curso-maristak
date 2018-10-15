@@ -3,7 +3,14 @@
 	<title>Ejercicio Template</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script type="text/javascript">
-
+    window.addEventListener("scroll", function (event) {
+      var scroll = this.scrollY;
+      if (scroll > 200) {
+        document.getElementById('menu-top').style['background-color'] = 'white'
+      } else {
+        document.getElementById('menu-top').style['background'] = 'transparent'
+      }
+    });
 	</script>
   <style>
     nav {
@@ -13,14 +20,258 @@
       z-index: 1000;
       width: 100%;
       height: 72px;
-      background-color: red;
+      background: transparent;
+    }
+    nav span {
+      color: rgba(255,255,255,.5);
+      font-weight: 700;
+      line-height: 70px;
+    }
+    nav ul {
+      list-style: none;
+    }
+    nav li{
+      display: inline-block;
+      line-height: 70px;
+      padding: 0 15px;
+    }
+    nav li a {
+      color: rgba(255,255,255,.5);
+    }
+    .menu {
+      display: inline-block;
+      float: right;
+    }
+    #inicio {
+      height: 100vh;
+      width: 100%;
+      background: linear-gradient(to bottom,rgba(22,22,22,.1) 0,rgba(22,22,22,.5) 75%,#161616 100%),url(./img/bg-masthead.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+      padding-top: 12%;
+      text-align: center;
+    }
+    #inicio h1 {
+      font-size: 6.5rem;
+      line-height: 6.5rem;
+      display: inline;
+      letter-spacing: .8rem;
+    }
+    #built {
+      padding-top: 300px;
+      text-align: center;
+      background: linear-gradient(to bottom,#161616 0,rgba(22,22,22,.9) 75%,rgba(22,22,22,.8) 100%);
+      color: #fff!important;
+
+    }
+    #shoreline {
+      padding-top: 60px;
+      padding-bottom: 25px;
+    }
+    #shoreline .col-right{
+      margin-left: -30px;
+    }
+    #shoreline .borde {
+      border-left: 5px solid #64A19D;
+      margin-top: 35%;
+      padding-left: 15px;
+    }
+    #square {
+      padding: 30px 30px 120px 30px;
+    }
+    .h-400 {
+      height: 400px;
+    }
+    .img-fluid {
+      max-width: 100%;
+    }
+    .square-b {
+      height: 100%;
+      background-color: #161616!important
+    }
+    .no-marging {
+      margin: 0;
+      padding: 0;
+    }
+    .b1 {
+      background-image: url(./img/left1.jpg);
+    }
+    .b2 {
+      background-image: url(./img/right2.jpg);
+    }
+    #square .borde {
+      padding-top: 25%;
+      padding-left: 15px;
+      width: 60%;
+      color: white;
+    }
+    #square .borde.borde1 {
+      padding-left: 70px;
+    }
+    #square .borde.borde2 {
+      padding-left: 45%;
+      width: 100%;
+    }
+    #square hr {
+      border-bottom: 5px solid #64A19D;
+      width: 25%;
+    }
+    .hr1 {
+      position: absolute;
+      left: 70px;
+    }
+    .hr2 {
+      position: absolute;
+      right: 70px;
+    }
+    #suscribe {
+      padding: 10rem 0;
+      background: linear-gradient(to bottom,rgba(22,22,22,.1) 0,rgba(22,22,22,.5) 75%,#161616 100%),url(./img/sign.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+      text-align: center;
+    }
+    #suscribe button {
+      background-color: #64A19D;
+      border-color: #64A19D;
+    }
+    #contact {
+      background-color:#161616!important;
+      padding: 100px;
+    }
+    .box {
+      height: 200px;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border-radius: .25rem;
+      text-align: center;
+    }
+    .border-bottom {
+      border-bottom: 5px solid #64a19d !important;
+    }
+    .box span {
+       display: inline-block;
+       margin-top: 80px;
     }
   </style>
 </head>
 
 <body>
-  <nav>
-    
+  <nav id="menu-top">
+    <div class="container">
+      <span>Start Bootstrap</span>
+      <div class="menu">
+        <ul>
+          <li><a href="#shoreline">About</a></li>
+          <li><a href="#square">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
+  <section id="inicio">
+    <h1>GRAYSCALE</h1>
+    <h2>A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+    <a href="#about" class="btn btn-primary">Get Started</a>
+  </section>
+  <section id="built">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <h2>Built with Bootstrap 4</h2>
+        <p>Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on the preview page. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <img src="img/ipad.png" class="img-fluid" alt="">
+      </div>
+    </div>
+  </section>
+  <section id="shoreline" class="container">
+    <div class="row">
+      <div class="col-7">
+        <img class="img-fluid mb-3 mb-lg-0" src="img/shoreline.jpg" alt="">
+      </div>
+      <div class="col-4 col-right">
+        <div class="borde">
+          <h4>Shoreline</h4>
+          <p>Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="square" class="container">
+    <div class="row h-400">
+      <div class="col-6 no-marging b1">
+      </div>
+      <div class="col-6 no-marging">
+        <div class="square-b">
+          <div class="borde borde1">
+            <h4>Misty</h4>
+            <p>An example of where you can put an image of a project, or anything else, along with a description.</p>
+          </div>
+          <hr class="hr1">
+        </div>
+      </div>
+    </div>
+    <div class="row h-400">
+      <div class="col-6 no-marging">
+        <div class="square-b">
+          <div class="borde borde2">
+            <h4>Mountains</h4>
+            <p>Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
+          </div>
+           <hr class="hr2">
+        </div>
+      </div>
+      <div class="col-6 no-marging b2">
+      </div>
+    </div>
+  </section>
+  <section id="suscribe">
+    <div class="container">
+      <div class="row">
+      <div class="col-12">
+        <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6  mx-auto">
+        <form class="form-inline d-flex">
+          <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+          <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="row">
+      <div class="col-7 mx-auto">
+        <div class="row">
+          <div class="col-4">
+            <div class="box border-bottom">
+              <span>ADDRESS</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="box border-bottom">
+              <span>EMAIL</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="box border-bottom">
+              <span>PHONE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
