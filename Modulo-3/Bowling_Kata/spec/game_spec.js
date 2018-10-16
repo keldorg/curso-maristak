@@ -7,6 +7,7 @@ describe("Bowling Game", function() {
       }
 
       it("Should score 0 points", function () {
+          console.log(game);
           expect(game.score()).toEqual(0);
       })
     })
