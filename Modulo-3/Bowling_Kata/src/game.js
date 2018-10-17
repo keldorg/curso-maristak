@@ -16,7 +16,7 @@ class Game {
 
     score() {
         let score = 0
-        for (let i = 0; i < this.turnos.legnth; i++) {
+        for (let i = 0; i < this.turnos.length; i++) {
             if (i < 10) {
                 score += this.turnos[i].score(this.turnos[i + 1])
             } else {

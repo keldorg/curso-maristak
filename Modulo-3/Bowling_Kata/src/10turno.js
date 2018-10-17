@@ -1,4 +1,4 @@
-class Turno10 {
+class Turno10 extends Turno{
     constructor(){
 
     }
