@@ -8,7 +8,7 @@ class Game {
         if (turnoActual) {
             turnoActual.roll(bolos)
         } else {
-            let nuevoTurno = (this.turnos.length < 10 ? new Turno(): new Turno10())
+            let nuevoTurno = (this.turnos.length < 9 ? new Turno(): new Turno10())
             nuevoTurno.roll(bolos)
             this.turnos.push(nuevoTurno)
         }
@@ -18,7 +18,7 @@ class Game {
         let score = 0
         for (let i = 0; i < this.turnos.length; i++) {
             if (i < 10) {
-                score += this.turnos[i].score(this.turnos[i + 1])
+                score += this.turnos[i].score(this.turnos.slice(i + 1, i + 3))
             } else {
                 score += this.turnos[i].score()
             }
