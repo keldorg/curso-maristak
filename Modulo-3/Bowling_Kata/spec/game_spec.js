@@ -1,7 +1,7 @@
 describe("Bowling Game", function() {
 
     describe("Bowling game'", function () {
-      const game = new Game();
+      const game = new Fizzbuzz();
       for(let i = 0; i<20; i++) {
           game.roll(0)
       }
@@ -12,7 +12,7 @@ describe("Bowling Game", function() {
     })
 
     describe("Bowling game todas las tiradas a 1'", function () {
-        const game = new Game();
+        const game = new Fizzbuzz();
         for(let i = 0; i<20; i++) {
             game.roll(1)
         }
@@ -23,7 +23,7 @@ describe("Bowling Game", function() {
     })
 
     describe("Bowling game una tirada de 10 puntos'", function () {
-        const game = new Game();
+        const game = new Fizzbuzz();
         game.roll(4)
         game.roll(6)
         game.roll(4)
@@ -37,7 +37,7 @@ describe("Bowling Game", function() {
     })
 
     describe("Bowling game un strike'", function () {
-        const game = new Game();
+        const game = new Fizzbuzz();
         game.roll(10)
         game.roll(6)
         game.roll(3)
@@ -51,7 +51,7 @@ describe("Bowling Game", function() {
     })
 
     describe("Bowling game dos strike'", function () {
-        const game = new Game();
+        const game = new Fizzbuzz();
         game.roll(10)
         game.roll(10)
         game.roll(3)
@@ -65,7 +65,7 @@ describe("Bowling Game", function() {
     })
 
     describe("Bowling game todo strike'", function () {
-        const game = new Game();
+        const game = new Fizzbuzz();
 
         for(let i = 0; i<12; i++) {
             game.roll(10)
@@ -77,10 +77,10 @@ describe("Bowling Game", function() {
     })
 
     describe("Bowling game todo'", function () {
-        const game = new Game();
+        const game = new Fizzbuzz();
 
-        game.roll(0)
-        game.roll(0)
+        game.roll(10)
+        //game.roll(0)
 
         game.roll(1)
         game.roll(1)
@@ -110,8 +110,8 @@ describe("Bowling Game", function() {
         game.roll(10)
         game.roll(10)
 
-        it("Should score 73 points", function () {
-            expect(game.score()).toEqual(73);
+        it("Should score 85 points", function () {
+            expect(game.score()).toEqual(85);
         })
     })
 
