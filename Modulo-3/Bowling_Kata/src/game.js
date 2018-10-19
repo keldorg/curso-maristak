@@ -18,6 +18,7 @@ class Game {
         let score = 0
         for (let i = 0; i < this.turnos.length; i++) {
             if (i < 10) {
+                console.log(this.turnos[i].score(this.turnos.slice(i + 1, i + 3)));
                 score += this.turnos[i].score(this.turnos.slice(i + 1, i + 3))
             } else {
                 score += this.turnos[i].score()

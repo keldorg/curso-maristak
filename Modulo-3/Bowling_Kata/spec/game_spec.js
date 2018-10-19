@@ -64,4 +64,55 @@ describe("Bowling Game", function() {
         })
     })
 
+    describe("Bowling game todo strike'", function () {
+        const game = new Game();
+
+        for(let i = 0; i<12; i++) {
+            game.roll(10)
+        }
+
+        it("Should score 300 points", function () {
+            expect(game.score()).toEqual(300);
+        })
+    })
+
+    describe("Bowling game todo'", function () {
+        const game = new Game();
+
+        game.roll(0)
+        game.roll(0)
+
+        game.roll(1)
+        game.roll(1)
+
+        game.roll(1)
+        game.roll(1)
+
+        game.roll(1)
+        game.roll(1)
+
+        game.roll(6)
+        game.roll(4)
+
+        game.roll(1)
+        game.roll(1)
+
+        game.roll(1)
+        game.roll(1)
+
+        game.roll(1)
+        game.roll(1)
+
+        game.roll(6)
+        game.roll(4)
+
+        game.roll(10)
+        game.roll(10)
+        game.roll(10)
+
+        it("Should score 73 points", function () {
+            expect(game.score()).toEqual(73);
+        })
+    })
+
 });

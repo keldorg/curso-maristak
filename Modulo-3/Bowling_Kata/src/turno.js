@@ -33,7 +33,11 @@ class Turno {
         if (this.getTipo() === 'strike') {
             score += siguientesTurnos[0].getPrimeraTirada()
             if (siguientesTurnos[0].getTipo() === 'strike') {
-                score += siguientesTurnos[1].getPrimeraTirada()
+                if (siguientesTurnos.length > 1) {
+                    score += siguientesTurnos[1].getPrimeraTirada()
+                } else {
+                    score += siguientesTurnos[0].getSegundaTirada()
+                }
             } else {
                 score += siguientesTurnos[0].getSegundaTirada()
             }
